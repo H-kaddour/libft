@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 15:50:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2021/11/04 21:18:56 by hkaddour         ###   ########.fr       */
+/*   Created: 2021/11/05 16:17:29 by hkaddour          #+#    #+#             */
+/*   Updated: 2021/11/05 19:16:34 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memchr(const void *str, int c, size_t n)
+void	*ft_calloc(size_t count, size_t size)
 {
-	unsigned int	i;
-	char			*s;
-
-	i = 0;
-	s = (char *) str;
-	while (i < n)
-	{
-		if (s[i] == c)
-			return (&s[i]);
-		i++;
-	}
-	return (NULL);
+	void	*ptr;
+	
+	ptr = malloc(count * size);
+	if (ptr == NULL)
+		return (NULL);
+	ft_bzero(ptr, count * size);
+	return (ptr);
 }
-/*
-int main()
-{
-	char arr[]= "hicham kaddouri";
-	char *ptr = ft_memchr(arr, 'i', 5);
-	printf("%s", ptr);
-	return (0);
-}*/

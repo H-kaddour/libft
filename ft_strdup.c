@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 15:50:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2021/11/04 21:18:56 by hkaddour         ###   ########.fr       */
+/*   Created: 2021/11/05 14:09:21 by hkaddour          #+#    #+#             */
+/*   Updated: 2021/11/05 16:15:40 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-void	*ft_memchr(const void *str, int c, size_t n)
+char	*ft_strdup(const char *s1)
 {
-	unsigned int	i;
-	char			*s;
+	int	i;
+	char	*ptr;
 
 	i = 0;
-	s = (char *) str;
-	while (i < n)
+	ptr = malloc(sizeof(char) * ft_strlen(s1) +1);
+	if (ptr == NULL)
+		return (NULL);
+	while (s1[i] != '\0')
 	{
-		if (s[i] == c)
-			return (&s[i]);
+		ptr[i] = s1[i];
 		i++;
 	}
-	return (NULL);
+	ptr[i] = '\0';
+	return (ptr);
 }
-/*
-int main()
-{
-	char arr[]= "hicham kaddouri";
-	char *ptr = ft_memchr(arr, 'i', 5);
-	printf("%s", ptr);
-	return (0);
-}*/
