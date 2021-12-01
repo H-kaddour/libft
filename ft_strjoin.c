@@ -6,7 +6,7 @@
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 18:11:37 by hkaddour          #+#    #+#             */
-/*   Updated: 2021/11/09 17:42:38 by hkaddour         ###   ########.fr       */
+/*   Updated: 2021/11/27 15:28:59 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -23,7 +23,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	len = ft_strlen(str1) + ft_strlen(str2);
-	ptr = malloc(sizeof(char *) * len + 1);
+	ptr = malloc(sizeof(char ) * len + 1);
 	if (ptr == NULL)
 		return (NULL);
 	while (*str1)

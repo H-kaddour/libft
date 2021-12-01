@@ -6,17 +6,17 @@
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 15:14:09 by hkaddour          #+#    #+#             */
-/*   Updated: 2021/11/19 18:17:03 by hkaddour         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:25:06 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	unsigned int	i;
 	char			*str;
 	char			*ptr;
-	
+
 	i = 0;
 	if (!s || !f)
 		return (NULL);

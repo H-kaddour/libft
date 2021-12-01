@@ -6,13 +6,14 @@
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 22:51:09 by hkaddour          #+#    #+#             */
-/*   Updated: 2021/11/12 22:51:22 by hkaddour         ###   ########.fr       */
+/*   Updated: 2021/11/28 13:41:10 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-int ft_check(char str, char *set)
+
+static int	ft_check(char str, char *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (set[i])
@@ -24,39 +25,32 @@ int ft_check(char str, char *set)
 	return (0);
 }
 
-char    *ft_strtrim(char const *s1, char const *set)
+char	*ft_strtrim(char const *s1, char const *set)
 {
-    int     i;
-    int     j;
-    int     h;
-    char    *ptr;
-    char    *str;
-    char    *sep;
-    
-    h = 0;
+	int		i;
+	int		j;
+	char	*ptr;
+	char	*str;
+	char	*sep;
+
 	if (!s1 || !set)
 		return (NULL);
-    str = (char *) s1;
-    sep = (char *) set;
-    i = 0;
+	str = (char *) s1;
+	sep = (char *) set;
+	i = 0;
 	j = ft_strlen(str);
-	while (str[i] && ft_check(str[i],sep))
+	while (str[i] && ft_check(str[i], sep))
 		i++;
 	if (i == j)
 		return (ft_strdup(""));
 	while (ft_check(str[j - 1], sep))
 		j--;
-    ptr = (char *) malloc(sizeof(char) * (j - i) + 1);
+	ptr = (char *) malloc(sizeof(char) * (j - i) + 1);
 	if (!ptr)
 		return (NULL);
-	ft_strlcpy(ptr,&str[i], j - i + 1);
-    return (ptr);
+	ft_strlcpy(ptr, &str[i], j - i + 1);
+	return (ptr);
 }
-
-
-
-
-
 /*
 char	*ft_strtrim(char const *s1, char const *set)
 {

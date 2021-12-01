@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   by: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   created: 2021/11/19 10:26:55 by hkaddour          #+#    #+#             */
-/*   Updated: 2021/11/19 18:06:22 by hkaddour         ###   ########.fr       */
+/*   Created: 2021/11/29 16:29:46 by hkaddour          #+#    #+#             */
+/*   Updated: 2021/11/30 10:05:50 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
-int	ft_strcount(char *s, char c)
+static int	ft_strcount(char *s, char c)
 {
 	int	len;
-	
+
 	len = 0;
 	while (*s != '\0')
 	{
@@ -23,29 +23,20 @@ int	ft_strcount(char *s, char c)
 			len++;
 			while (*s != '\0' && *s != c)
 				s++;
-			continue;
+			continue ;
 		}
 		s++;
 	}
 	return (len);
 }
 
-void	ft_free(char **ptr,int w)
+static char	*ft_alloc_word_by_word(char *s, char c)
 {
-	while (w >= 0)
-	{
-		free(ptr[w--]);
-	}
-	free(ptr);
-}
-
-char	*ft_alloc_word_by_word(char *s, char c)
-{
-	int 	len;
+	int		len;
 	char	*ptr;
 
 	len = 0;
-	while(s[len] != c && s[len])
+	while (s[len] != c && s[len])
 		len++;
 	ptr = (char *) malloc(sizeof(char) * len + 1);
 	while (*s != c && *s)
@@ -55,6 +46,31 @@ char	*ft_alloc_word_by_word(char *s, char c)
 	*ptr = '\0';
 	return (ptr - len);
 }
+
+static void	ft_alloc_all(char *str, char c, int w, char **ptr)
+{
+	while (*str)
+	{
+		if (*str != c && *str)
+		{
+			ptr[w++] = ft_alloc_word_by_word(str, c);
+			if (!ptr)
+			{
+				while (w >= 0)
+				{
+					free(ptr[w--]);
+				}
+				free(ptr);
+			}
+			while (*str != c && *str)
+				str++;
+			continue ;
+		}
+		str++;
+	}
+	ptr[w] = NULL;
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int		i;
@@ -70,19 +86,6 @@ char	**ft_split(char const *s, char c)
 	ptr = (char **) malloc(sizeof(char *) * (ft_strcount(str, c) + 1));
 	if (!ptr)
 		return (NULL);
-	while(*str)
-	{
-		if (*str != c && *str)
-		{
-			ptr[w++] = ft_alloc_word_by_word(str,c);
-			if (!ptr)
-				ft_free(ptr,w);
-			while (*str != c && *str)
-				str++;
-			continue;
-		}
-		str++;
-	}
-	ptr[w] = NULL;
+	ft_alloc_all(str, c, w, ptr);
 	return (ptr);
 }
