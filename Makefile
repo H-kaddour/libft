@@ -6,20 +6,18 @@
 #    By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/04 20:10:00 by hkaddour          #+#    #+#              #
-#    Updated: 2021/12/01 13:38:55 by hkaddour         ###   ########.fr        #
+#    Updated: 2021/12/07 13:40:17 by hkaddour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 cc = gcc
-headers = ./includes
-flags = -Wall -Wextra -Werror
+header = libft.h
+CFLAGS = -Wall -Wextra -Werror
 srcs =	ft_atoi.c \
-		ft_lstadd_front.c \
 		ft_putnbr_fd.c \
 		ft_strlen.c \
 		ft_bzero.c \
-		ft_lstnew.c \
  		ft_putstr_fd.c \
 		ft_strmapi.c \
 		ft_calloc.c \
@@ -56,12 +54,12 @@ objs = $(srcs:.c=.o)
 all : $(NAME)
 
 %.o: %.c
-	$(cc) $(flags) -c $(srcs) -I libft.h
+	$(cc) $(CFLAGS) -c $^ -I $(header)
 
 $(NAME): $(objs)
-	ar -rc $(NAME) $(objs)
+	ar -rc $@ $^
 
-clean :
+clean:
 	rm -rf $(objs)
 
 fclean : clean

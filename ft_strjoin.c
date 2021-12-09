@@ -6,7 +6,7 @@
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/08 18:11:37 by hkaddour          #+#    #+#             */
-/*   Updated: 2021/11/27 15:28:59 by hkaddour         ###   ########.fr       */
+/*   Updated: 2021/12/04 20:53:44 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -37,12 +37,3 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	*ptr = '\0';
 	return ((char *) ptr - len);
 }
-/*
-int main()
-{
-	char s1[]= "hicham";
-	char s2[]= "kaddouri";
-	char *ptr = ft_strjoin(s1, s2);
-	printf("%s",  ptr);
-	return (0);
-}*/

@@ -6,7 +6,7 @@
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 22:51:09 by hkaddour          #+#    #+#             */
-/*   Updated: 2021/11/28 13:41:10 by hkaddour         ###   ########.fr       */
+/*   Updated: 2021/12/02 07:52:16 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -51,51 +51,3 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ft_strlcpy(ptr, &str[i], j - i + 1);
 	return (ptr);
 }
-/*
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	int		i;
-	int		j;
-	//int		h;
-	int		len;
-	//int		set_start;
-	//int		set_end;
-	char	*ptr;
-	char	*str;
-
-	i = 0;
-	if (!s1 || !set)
-		return (NULL);
-	j = 0;
-	str = (char *) s1;
-	len = ft_strlen(str) - 1;
-	ptr = (char *) malloc(sizeof(char) * len);
-	if (!ptr)
-		return (NULL);
-	while (set[i] == str[i])
-	{
-			i++;
-	}
-	while (str[len] && str[len] == set[len])
-	{
-		if (str[len] == set[len])
-			len++;
-		else
-			break;
-	}
-	ft_strlcpy(ptr, s1, len);
-	while(*ptr)
-	{
-		*ptr++ = *str++;
-	}
-	*ptr = '\0';
-	return (ptr);
-}
-
-int main()
-{
-	char str[]= "#*##hicham kaddouri###";
-	char set[]= "#";
-	printf("%s", ft_strtrim(str, set));
-	return (0);
-}*/

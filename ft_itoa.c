@@ -6,7 +6,7 @@
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/19 17:53:30 by hkaddour          #+#    #+#             */
-/*   Updated: 2021/11/29 19:02:07 by hkaddour         ###   ########.fr       */
+/*   Updated: 2021/12/02 11:47:11 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
@@ -37,7 +37,7 @@ static int	ft_nbrlen(int n)
 
 	i = 0;
 	if (n == 0)
-		i = 1;
+		return (1);
 	while (n != 0)
 	{
 		n /= 10;
@@ -68,7 +68,7 @@ char	*ft_itoa(int n)
 	while (n > 9)
 	{
 		ptr[i--] = n % 10 + '0';
-		n = n / 10;
+		n /= 10;
 	}
 	ptr[i] = n + '0';
 	return (ptr);

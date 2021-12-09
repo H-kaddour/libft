@@ -1,2 +1,1 @@
-# libft
-Libft contain all the function
+Libft project contain all the function accept the Bonus part.
